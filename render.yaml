@@ -5,7 +5,7 @@ services:
     plan: free
     runtime: node
     nodeVersion: 20.10.0
-    buildCommand: npm install --legacy-peer-deps && npx vite build && npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+    buildCommand: ./build-scripts/build.sh
     startCommand: npm start
     envVars:
       - key: NODE_ENV
