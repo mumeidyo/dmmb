@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: discord-moderation-bot
+    name: dmmb
     env: node
     plan: free
-    buildCommand: npm run build
+    runtime: node
+    nodeVersion: 20.10.0
+    buildCommand: npm install --legacy-peer-deps && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
