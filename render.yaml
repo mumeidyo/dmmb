@@ -1,15 +1,17 @@
 services:
   - type: web
-    name: dmmb
+    name: discord-moderation-bot
     env: node
     plan: free
     runtime: node
     nodeVersion: 20.10.0
-    buildCommand: npm install --legacy-peer-deps && npm run build
+    buildCommand: npm install --legacy-peer-deps && npx vite build && npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NODE_PATH
+        value: node_modules
       - key: DISCORD_BOT_TOKEN
         sync: false # シークレットとして手動で設定する必要あり
     healthCheckPath: /api/status
