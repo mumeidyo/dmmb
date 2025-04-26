@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: discord-moderation-bot
+    env: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DISCORD_BOT_TOKEN
+        sync: false # シークレットとして手動で設定する必要あり
+    healthCheckPath: /api/status
